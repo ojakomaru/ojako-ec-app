@@ -1,10 +1,10 @@
-"use client";
-import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
-import StyledComponentsRegistry from "lib/registry";
-import GlobalStyles from "themes/GlobalStyles";
+'use client';
 
-const noto_sans_jp = Noto_Sans_JP({ subsets: ["latin"] });
+import { Noto_Sans_JP } from 'next/font/google';
+import StyledComponentsRegistry from 'lib/registry';
+import GlobalStyles from 'themes/GlobalStyles';
+
+const noto_sans_jp = Noto_Sans_JP({ subsets: ['latin'] });
 
 // クライアントレンダリングによってエラーになるようなので保留
 // export const metadata: Metadata = {

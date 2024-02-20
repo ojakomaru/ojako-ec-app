@@ -1,4 +1,3 @@
-import React from 'react';
 import { StoryObj, Meta } from '@storybook/react';
 import { SimpleButton } from 'components/SimpleButton';
 
@@ -7,8 +6,8 @@ const meta: Meta<typeof SimpleButton> = {
   args: {
     label: 'Simple Button',
     color: '#3700ff',
-    onClick: () => {}
-  }
+    onClick: () => {},
+  },
 };
 
 export default meta;
@@ -19,4 +18,4 @@ export const Default: Story = {
   argTypes: {
     onClick: { action: true },
   },
-}
+};

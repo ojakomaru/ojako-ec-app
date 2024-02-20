@@ -1,5 +1,6 @@
-"use client";
-import styled from "styled-components";
+'use client';
+// eslint-disable-next-line import/no-named-as-default
+import styled from 'styled-components';
 
 const StyledButton = styled.button<{ color: string }>`
   background-color: ${({ color }) => color};
@@ -20,7 +21,7 @@ type ButtonProps = {
 
 export const SimpleButton = ({
   label,
-  color = "#3700ff",
+  color = '#3700ff',
   onClick = () => {},
 }: ButtonProps) => {
   return (
