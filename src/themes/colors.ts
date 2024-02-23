@@ -12,6 +12,9 @@ const colors = {
   black: '#000000',
   white: '#ffffff',
   text: '#000000',
+  inputText: '#555555',
+  placeholder: '#ccc',
+  icon: 'inherit',
 } as const;
 
 export default colors;

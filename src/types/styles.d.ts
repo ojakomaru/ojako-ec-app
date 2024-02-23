@@ -1,4 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-types */
+import { theme } from 'themes';
+// Themeの型を定義
+type Theme = typeof theme;
+declare module 'styled-components' {
+  export interface DefaultTheme extends Theme {}
+}
 /**
  * Responsiveプロパティ
  */

@@ -1,5 +1,6 @@
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import {theme} from '../src/themes';
 
 export const GlobalStyles = createGlobalStyle`
   :root {
@@ -113,6 +114,10 @@ export const GlobalStyles = createGlobalStyle`
 
 export const decorators = [
   withThemeFromJSXProvider({
-    GlobalStyles, // Adds your GlobalStyle component to all stories
-  }),
-];
+  themes: {
+    light: theme,
+  },
+  defaultTheme: 'light',
+  Provider: ThemeProvider,
+  GlobalStyles,
+})];

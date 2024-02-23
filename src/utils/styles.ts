@@ -64,12 +64,12 @@ export function toPropValue<T>(
           prop[responsiveKey],
           theme,
         )};`;
-        result.push(`@media screen and (min-width: ${breakpoint}) {${style}}`);
+        result.push(`@media screen and (min-width: ${breakpoint}) {${style}};`);
       }
     }
     return result.join('\n');
   }
-  return `${propKey}: ${toThemeValueIfNeeded(propKey, prop, theme)}`;
+  return `${propKey}: ${toThemeValueIfNeeded(propKey, prop, theme)};`;
 }
 
 const SPACE_KEYS = new Set([

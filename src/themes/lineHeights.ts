@@ -1,3 +1,9 @@
-const lineHeights: string[] = ['17px', '19px', '22px', '26px', '28px', '37px'];
-
+const lineHeights = {
+  extraSmall: '17px',
+  small: '19px',
+  medium: '22px',
+  mediumLarge: '26px',
+  large: '28px',
+  extraLarge: '37px',
+};
 export default lineHeights;
