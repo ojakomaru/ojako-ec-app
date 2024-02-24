@@ -1,8 +1,8 @@
 'use client';
 /* eslint-disable prettier/prettier */
 // eslint-disable-next-line import/no-named-as-default
-import styled from 'styled-components'
-import { Responsive } from 'types/styles'
+import styled from 'styled-components';
+import { Responsive } from 'types/styles';
 import {
   toPropValue,
   Color,
@@ -10,46 +10,47 @@ import {
   LetterSpacing,
   LineHeight,
   Space,
-} from 'utils/styles'
+} from 'utils/styles';
 
 // ボタンのバリアント
-export type ButtonVariant = 'primary' | 'secondary' | 'danger'
+export type ButtonVariant = 'primary' | 'secondary' | 'danger';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  $variant?: ButtonVariant
-  $fontSize?: Responsive<FontSize>
-  $fontWeight?: Responsive<string>
-  $letterSpacing?: Responsive<LetterSpacing>
-  $lineheight?: Responsive<LineHeight>
-  $textalign?: Responsive<string>
-  $color?: Responsive<Color>
-  $backgroundColor?: Responsive<Color>
-  $width?: Responsive<string>
-  $height?: Responsive<string>
-  $minWidth?: Responsive<string>
-  $minHeight?: Responsive<string>
-  $display?: Responsive<string>
-  $border?: Responsive<string>
-  $overflow?: Responsive<string>
-  $margin?: Responsive<Space>
-  $marginTop?: Responsive<Space>
-  $marginRight?: Responsive<Space>
-  $marginBottom?: Responsive<Space>
-  $marginLeft?: Responsive<Space>
-  $padding?: Responsive<Space>
-  $paddingtop?: Responsive<Space>
-  $paddingright?: Responsive<Space>
-  $paddingbottom?: Responsive<Space>
-  $paddingleft?: Responsive<Space>
+  $variant?: ButtonVariant;
+  $fontSize?: Responsive<FontSize>;
+  $fontWeight?: Responsive<string>;
+  $letterSpacing?: Responsive<LetterSpacing>;
+  $lineheight?: Responsive<LineHeight>;
+  $textalign?: Responsive<string>;
+  $color?: Responsive<Color>;
+  $backgroundColor?: Responsive<Color>;
+  $width?: Responsive<string>;
+  $height?: Responsive<string>;
+  $minWidth?: Responsive<string>;
+  $minHeight?: Responsive<string>;
+  $display?: Responsive<string>;
+  $border?: Responsive<string>;
+  $overflow?: Responsive<string>;
+  $margin?: Responsive<Space>;
+  $marginTop?: Responsive<Space>;
+  $marginRight?: Responsive<Space>;
+  $marginBottom?: Responsive<Space>;
+  $marginLeft?: Responsive<Space>;
+  $padding?: Responsive<Space>;
+  $paddingtop?: Responsive<Space>;
+  $paddingright?: Responsive<Space>;
+  $paddingbottom?: Responsive<Space>;
+  $paddingleft?: Responsive<Space>;
+  // 擬似クラス
   $pseudoClass?: {
     hover?: {
-      backgroundColor?: Responsive<Color>
-    }
+      backgroundColor?: Responsive<Color>;
+    };
     disabled?: {
-      backgroundColor?: Responsive<Color>
-    }
-  }
-}
+      backgroundColor?: Responsive<Color>;
+    };
+  };
+};
 
 const variants = {
   // プライマリ
@@ -94,19 +95,25 @@ const variants = {
       },
     },
   },
-}
+};
 
 /**
  * ボタン
  * バリアント、色、タイポグラフィ、レイアウト、スペース関連のPropsを追加
  */
 const Button = styled.button<ButtonProps>`
-  ${({ $variant, $color, $backgroundColor, $pseudoClass, theme }) => {
+  ${({
+    $variant = 'primary',
+    $color = 'white',
+    $backgroundColor,
+    $pseudoClass,
+    theme,
+  }) => {
     // バリアントのスタイルの適用
     if ($variant && variants[$variant]) {
-      const styles = []
+      const styles = [];
       !$color &&
-        styles.push(toPropValue('color', variants[$variant].color, theme))
+        styles.push(toPropValue('color', variants[$variant].color, theme));
       !$backgroundColor &&
         styles.push(
           toPropValue(
@@ -114,7 +121,7 @@ const Button = styled.button<ButtonProps>`
             variants[$variant].backgroundColor,
             theme,
           ),
-        )
+        );
       !$pseudoClass &&
         styles.push(
           `&:hover {
@@ -124,7 +131,7 @@ const Button = styled.button<ButtonProps>`
               theme,
             )}
           }`.replaceAll('\n', ''),
-        )
+        );
       !$pseudoClass &&
         styles.push(
           `&:disabled {
@@ -134,32 +141,43 @@ const Button = styled.button<ButtonProps>`
               theme,
             )}
           }`.replaceAll('\n', ''),
-        )
-      return styles.join('\n')
+        );
+      return styles.join('\n');
     }
   }}
-  ${(props) => toPropValue('font-size', props.$fontSize, props.theme)}
-  ${(props) => toPropValue('letter-spacing', props.$letterSpacing, props.theme)}
-  ${(props) => toPropValue('line-height', props.$lineheight, props.theme)}
-  ${(props) => toPropValue('color', props.$color, props.theme)}
-  ${(props) => toPropValue('background-color', props.$backgroundColor, props.theme)}
-  ${(props) => toPropValue('width', props.$width, props.theme)}
-  ${(props) => toPropValue('height', props.$height, props.theme)}
-  ${(props) => toPropValue('min-width', props.$minWidth, props.theme)}
-  ${(props) => toPropValue('min-height', props.$minHeight, props.theme)}
-  ${(props) => toPropValue('display', props.$display, props.theme)}
-  ${(props) => toPropValue('border', props.$border, props.theme)}
-  ${(props) => toPropValue('overflow', props.$overflow, props.theme)}
-  ${(props) => toPropValue('margin', props.$margin, props.theme)}
-  ${(props) => toPropValue('margin-top', props.$marginTop, props.theme)}
-  ${(props) => toPropValue('margin-left', props.$marginLeft, props.theme)}
-  ${(props) => toPropValue('margin-bottom', props.$marginBottom, props.theme)}
-  ${(props) => toPropValue('margin-right', props.$marginRight, props.theme)}
-  ${(props) => toPropValue('padding', props.$padding, props.theme)}
-  ${(props) => toPropValue('padding-top', props.$paddingtop, props.theme)}
-  ${(props) => toPropValue('padding-left', props.$paddingleft, props.theme)}
-  ${(props) => toPropValue('padding-bottom', props.$paddingbottom, props.theme)}
-  ${(props) => toPropValue('padding-right', props.$paddingright, props.theme)}
+  ${({ $fontSize, theme }) => toPropValue('font-size', $fontSize, theme)}
+  ${({ $textalign = 'center', theme }) =>
+    toPropValue('text-align', $textalign, theme)}
+  ${({ $letterSpacing, theme }) =>
+    toPropValue('letter-spacing', $letterSpacing, theme)}
+  ${({ $lineheight, theme }) => toPropValue('line-height', $lineheight, theme)}
+  ${({ $color, theme }) => toPropValue('color', $color, theme)}
+  ${({ $backgroundColor, theme }) =>
+    toPropValue('background-color', $backgroundColor, theme)}
+  ${({ $width, theme }) => toPropValue('width', $width, theme)}
+  ${({ $height, theme }) => toPropValue('height', $height, theme)}
+  ${({ $minWidth, theme }) => toPropValue('min-width', $minWidth, theme)}
+  ${({ $minHeight, theme }) => toPropValue('min-height', $minHeight, theme)}
+  ${({ $display = 'inline-block', theme }) =>
+    toPropValue('display', $display, theme)}
+  ${({ $border, theme }) => toPropValue('border', $border, theme)}
+  ${({ $overflow, theme }) => toPropValue('overflow', $overflow, theme)}
+  ${({ $margin, theme }) => toPropValue('margin', $margin, theme)}
+  ${({ $marginTop, theme }) => toPropValue('margin-top', $marginTop, theme)}
+  ${({ $marginLeft, theme }) => toPropValue('margin-left', $marginLeft, theme)}
+  ${({ $marginBottom, theme }) =>
+    toPropValue('margin-bottom', $marginBottom, theme)}
+  ${({ $marginRight, theme }) =>
+    toPropValue('margin-right', $marginRight, theme)}
+  ${({ $padding, theme }) => toPropValue('padding', $padding, theme)}
+  ${({ $paddingtop = 'small', ...props }) =>
+    toPropValue('padding-top', $paddingtop, props.theme)}
+  ${({ $paddingleft = 'small', ...props }) =>
+    toPropValue('padding-left', $paddingleft, props.theme)}
+  ${({ $paddingbottom = '', theme }) =>
+    toPropValue('padding-bottom', $paddingbottom, theme)}
+  ${({ $paddingright = 'small', ...props }) =>
+    toPropValue('padding-right', $paddingright, props.theme)}
   &:hover {
     ${(props) =>
       toPropValue(
@@ -180,19 +198,6 @@ const Button = styled.button<ButtonProps>`
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   border-radius: 4px;
   border: none;
-`
+`;
 
-Button.defaultProps = {
-  $variant: 'primary',
-  $paddingleft: 'small',
-  $paddingright: 'small',
-  $paddingtop: 'small',
-  $paddingbottom: '',
-  $color: 'white',
-  $display: 'inline-block',
-  $textalign: 'center',
-  $lineheight: 'inherit',
-  $fontSize: 'inherit',
-}
-
-export default Button
+export default Button;

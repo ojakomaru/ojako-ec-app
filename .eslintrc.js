@@ -14,6 +14,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:storybook/recommended',
+    // 'prettire',
   ],
   overrides: [
     {
@@ -30,6 +31,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: ["./tsconfig.json"],
   },
   plugins: ['@typescript-eslint', 'react'],
   rules: {
@@ -44,7 +46,7 @@ module.exports = {
     //     singleQuote: true,
     //     printWidth: 80,
     //     tabWidth: 2,
-    //     // parser: 'flow',
+    //     parser: 'flow',
     //   },
     // ],
   },

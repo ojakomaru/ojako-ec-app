@@ -38,12 +38,12 @@ const DropdownPlaceholder = styled.div`
 `;
 
 // ドロップダウンの矢印の外観
-const DropdownArrow = styled.div<{ isOpen?: boolean }>`
-  border-color: ${({ isOpen }) =>
-    isOpen
+const DropdownArrow = styled.div<{ $isOpen?: boolean }>`
+  border-color: ${({ $isOpen }) =>
+    $isOpen
       ? 'transparent transparent #222222;'
       : '#222222 transparent transparent'};
-  border-width: ${({ isOpen }) => (isOpen ? '0 5px 5px' : '5px 5px 0;')};
+  border-width: ${({ $isOpen }) => ($isOpen ? '0 5px 5px' : '5px 5px 0;')};
   border-style: solid;
   content: ' ';
   display: block;
@@ -88,7 +88,7 @@ const DropdownItem = (props: DropdownItemProps) => {
   const { item } = props;
 
   return (
-    <Flex alignItems="center">
+    <Flex $alignItems="center">
       <Text $margin={'small'} $variant="small">
         {item.label ?? item.value}
       </Text>
@@ -209,7 +209,7 @@ const Dropdown = (props: DropdownProps) => {
           value={selectedItem?.value ?? ''}
           onChange={() => onChange && onChange(selectedItem)}
         />
-        <DropdownArrow isOpen={isOpen} />
+        <DropdownArrow $isOpen={isOpen} />
       </DropdownControl>
       {/* ドロップダウンを表示 */}
       {isOpen && (

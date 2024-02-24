@@ -12,6 +12,7 @@ import {
 } from '@mui/icons-material';
 import SvgIcon from '@mui/material/SvgIcon';
 import { styled } from 'styled-components';
+// eslint-disable-next-line import/no-unresolved
 import { theme } from 'themes';
 
 // list out color types

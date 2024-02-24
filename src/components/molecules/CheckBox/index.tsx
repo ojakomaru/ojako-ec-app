@@ -29,8 +29,7 @@ const Label = styled.label`
   user-select: none;
 `;
 
-const CheckBox = (props: CheckBoxProps) => {
-  const { id, label, onChange, checked, ...rest } = props;
+const CheckBox = ({ id, label, onChange, checked, ...rest }: CheckBoxProps) => {
   const [isChecked, setIsChecked] = useState(checked);
   const ref = useRef<HTMLInputElement>(null);
 
@@ -59,7 +58,7 @@ const CheckBox = (props: CheckBoxProps) => {
         readOnly={!onChange}
         onChange={onChange}
       />
-      <Flex alignItems={'center'}>
+      <Flex $alignItems={'center'}>
         {/* チェックボックスのON/OFFの描画 */}
         {checked ?? isChecked ? (
           <CheckBoxIcon size={20} onClick={onClick} />

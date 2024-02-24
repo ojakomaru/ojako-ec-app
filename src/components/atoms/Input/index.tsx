@@ -1,12 +1,11 @@
-// eslint-disable-next-line import/no-named-as-default
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 /**
  * テキストインプット
  */
 const Input = styled.input<{ $hasError?: boolean; $hasBorder?: boolean }>`
   color: ${({ theme }) => theme.colors.inputText};
-  ${({ theme, $hasBorder, $hasError }) => {
+  ${({ theme, $hasBorder = true, $hasError }) => {
     if ($hasBorder) {
       return css`
         border: 1px solid
@@ -41,9 +40,5 @@ const Input = styled.input<{ $hasError?: boolean; $hasBorder?: boolean }>`
     -moz-appearance: textfield;
   }
 `;
-
-Input.defaultProps = {
-  $hasBorder: true,
-};
 
 export default Input;
