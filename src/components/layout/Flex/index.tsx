@@ -33,25 +33,23 @@ type FlexProps = BoxProps & {
  * flexboxの実現に利用する
  */
 const Flex = styled(Box)<FlexProps>`
-  display:
-    'flex',
-    ${({ $alignItems, theme }) =>
-        toPropValue('align-items', $alignItems, theme)}
-      ${({ $alignContent, theme }) =>
-        toPropValue('align-content', $alignContent, theme)}
+  display: flex;
+  ${({ $alignItems, theme }) => toPropValue('align-items', $alignItems, theme)}
+  ${({ $alignContent, theme }) =>
+    toPropValue('align-content', $alignContent, theme)}
       ${({ $justifyContent, theme }) =>
-        toPropValue('justify-content', $justifyContent, theme)}
+    toPropValue('justify-content', $justifyContent, theme)}
       ${({ $justifyItems, theme }) =>
-        toPropValue('justify-items', $justifyItems, theme)}
+    toPropValue('justify-items', $justifyItems, theme)}
       ${({ $flexWrap, theme }) => toPropValue('flex-wrap', $flexWrap, theme)}
       ${({ $flexBasis, theme }) => toPropValue('flex-basis', $flexBasis, theme)}
       ${({ $flexDirection, theme }) =>
-        toPropValue('flex-direction', $flexDirection, theme)}
+    toPropValue('flex-direction', $flexDirection, theme)}
       ${({ $flexGrow, theme }) => toPropValue('flex-grow', $flexGrow, theme)}
       ${({ $flexShrink, theme }) =>
-        toPropValue('flex-shrink', $flexShrink, theme)}
+    toPropValue('flex-shrink', $flexShrink, theme)}
       ${({ $justifySelf, theme }) =>
-        toPropValue('justify-self', $justifySelf, theme)}
+    toPropValue('justify-self', $justifySelf, theme)}
       ${({ $alignSelf, theme }) => toPropValue('align-self', $alignSelf, theme)}
       ${({ $order, theme }) => toPropValue('order', $order, theme)};
 `;
