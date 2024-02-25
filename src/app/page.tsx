@@ -1,25 +1,14 @@
 'use client';
-import Button from 'components/atoms/Button';
-import CartProduct from 'components/organisms/CartProduct';
+
+import AppLogo from 'components/atoms/AppLogo';
+import ScaleImage from 'components/atoms/ScaleImage';
 
 export default function Home() {
   return (
     <main className={'main'}>
       <h1>初めてのNextJs</h1>
-      <CartProduct
-        imageUrl={'/src/assets/images/1.jpg'}
-        id={1}
-        title="test"
-        price={300}
-        onBuyButtonClick={() => null}
-      />
-      <Button
-        $fontSize={{ base: 'small', md: 'medium' }}
-        $variant="secondary"
-        $backgroundColor={'#3ccc'}
-      >
-        これが完成したボタンです。
-      </Button>
+      <AppLogo />
+      <ScaleImage src={'/images/1.jpg'} alt={'test'} />
     </main>
   );
 }

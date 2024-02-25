@@ -1,14 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ShapeImage from './index';
 
-const meta = {
+export default {
   title: 'Atoms/ShapeImage',
   component: ShapeImage,
   parameters: {
-    // キャンバスのコンポーネントを中央に配置するためのオプション
     layout: 'centered',
   },
-  // ドックを自動生成
   tags: ['autodocs'],
   argTypes: {
     shape: {
@@ -46,8 +44,6 @@ const meta = {
     },
   },
 } satisfies Meta<typeof ShapeImage>;
-
-export default meta;
 
 type Story = StoryObj<typeof ShapeImage>;
 

@@ -5,10 +5,8 @@ const meta = {
   title: 'Atoms/IconButton',
   component: SearchIcon,
   parameters: {
-    // キャンバスのコンポーネントを中央に配置するためのオプション
     layout: 'centered',
   },
-  // ドックを自動生成
   tags: ['autodocs'],
   argTypes: {
     color: {
