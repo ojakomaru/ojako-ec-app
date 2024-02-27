@@ -1,6 +1,7 @@
 import ContentLoader from 'react-content-loader';
 import type { IContentLoaderProps } from 'react-content-loader';
 
+// プレースホルダーの幅と高さを追加するProps
 interface RectLoaderProps extends IContentLoaderProps {
   width: number;
   height: number;
@@ -8,13 +9,14 @@ interface RectLoaderProps extends IContentLoaderProps {
 
 /**
  * レクトローダー
+ * @description コンテンツの読み込み時に表示するプレースホルダーのコンポーネント
  */
 const RectLoader = ({ width, height, ...rest }: RectLoaderProps) => (
   <ContentLoader
-    speed={2}
+    speed={2} // アニメーション速度を二秒に
     width={width}
     height={height}
-    viewBox={`0 0 ${width} ${height}`}
+    viewBox={`0 0 ${width} ${height}`} // SVGの表示領域
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
     {...rest}

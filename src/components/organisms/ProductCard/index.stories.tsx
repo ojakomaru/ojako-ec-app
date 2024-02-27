@@ -1,8 +1,15 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-import ProductCard from './index'
+import { Meta, StoryObj } from '@storybook/react';
+import ProductCard from './index';
 
 export default {
   title: 'Organisms/ProductCard',
+  component: ProductCard,
+  parameters: {
+    // キャンバスのコンポーネントを中央に配置するためのオプション
+    layout: 'centered',
+  },
+  // ドックを自動生成
+  tags: ['autodocs'],
   argTypes: {
     title: {
       control: { type: 'text' },
@@ -39,39 +46,40 @@ export default {
       description: 'バリアント（表示スタイル）',
       table: {
         type: { summary: 'listing | small | detail' },
-        defaultValue: { summary: 'primary' },
+        defaultValue: { summary: 'listing' },
       },
     },
   },
-} as ComponentMeta<typeof ProductCard>
+} satisfies Meta<typeof ProductCard>;
 
-const Template: ComponentStory<typeof ProductCard> = (args) => (
-  <ProductCard {...args} />
-)
+type Template = StoryObj<typeof ProductCard>;
 
 // Listingカード
-export const Listing = Template.bind({})
-Listing.args = {
-  variant: 'listing',
-  title: 'ナイスシューズ',
-  imageUrl: '/images/sample/1.jpg',
-  price: 2000,
-}
+export const Listing: Template = {
+  args: {
+    variant: 'listing',
+    title: 'ナイスシューズ',
+    imageUrl: '/images/1.jpg',
+    price: 2000,
+  },
+};
 
 // Smallカード
-export const Small = Template.bind({})
-Small.args = {
-  variant: 'small',
-  title: 'ナイスシューズ',
-  imageUrl: '/images/sample/1.jpg',
-  price: 2000,
-}
+export const Small: Template = {
+  args: {
+    variant: 'small',
+    title: 'ナイスシューズ',
+    imageUrl: '/images/1.jpg',
+    price: 2000,
+  },
+};
 
 // Detailカード
-export const Detail = Template.bind({})
-Detail.args = {
-  variant: 'detail',
-  title: 'ナイスシューズ',
-  imageUrl: '/images/sample/1.jpg',
-  price: 2000,
-}
+export const Detail: Template = {
+  args: {
+    variant: 'detail',
+    title: 'ナイスシューズ',
+    imageUrl: '/images/1.jpg',
+    price: 2000,
+  },
+};

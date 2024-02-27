@@ -4,7 +4,7 @@ const letterSpacings = {
   medium: '0.08px',
   mediumLarge: '0.09px',
   large: '0.1px',
-  extraLarge: '0.1px',
+  extraLarge: '0.15px',
 };
 
 export default letterSpacings;

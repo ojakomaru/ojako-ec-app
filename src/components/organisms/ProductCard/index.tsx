@@ -72,28 +72,28 @@ const ProductCard = ({
           <Box>
             <Text
               as="h2"
-              fontSize={{ base: 'small', md: 'mediumLarge' }}
-              letterSpacing={{ base: 2, md: 3 }}
-              lineHeight={{ base: '32px', md: '48px' }}
-              backgroundColor="white"
-              margin={0}
-              paddingRight={2}
-              paddingLeft={2}
-              paddingTop={0}
-              paddingBottom={0}
+              $fontSize={{ base: 'small', md: 'mediumLarge' }}
+              $letterSpacing={{ base: 'medium', md: 'large' }}
+              $lineHeight={{ base: '32px', md: '48px' }}
+              $backgroundColor="white"
+              $margin={'none'}
+              $paddingRight={'medium'}
+              $paddingLeft={'medium'}
+              $paddingTop={'none'}
+              $paddingBottom={'none'}
             >
               {title}
             </Text>
             <Text
               as="span"
-              fontWeight="bold"
-              display="inline-block"
-              backgroundColor="white"
-              fontSize={{ base: 'extraSmall', md: 'medium' }}
-              lineHeight={{ base: '8px', md: '12px' }}
-              letterSpacing={{ base: 2, md: 4 }}
-              margin={0}
-              padding={{ base: 1, md: 2 }}
+              $fontWeight="bold"
+              $display="inline-block"
+              $backgroundColor="white"
+              $fontSize={{ base: 'extraSmall', md: 'medium' }}
+              $lineHeight={{ base: '8px', md: '12px' }}
+              $letterSpacing={{ base: 'medium', md: 'extraLarge' }}
+              $margin={'none'}
+              $padding={{ base: 'small', md: 'medium' }}
             >
               {price}円
             </Text>
@@ -104,6 +104,7 @@ const ProductCard = ({
         {blurDataUrl && (
           <ScaleImage
             src={imageUrl}
+            alt={'ProductCardImage'}
             width={imgSize ?? 240}
             height={imgSize ?? 240}
             containerWidth={size}
@@ -116,6 +117,7 @@ const ProductCard = ({
         {!blurDataUrl && (
           <ScaleImage
             src={imageUrl}
+            alt={'ProductCardImage'}
             width={imgSize ?? 240}
             height={imgSize ?? 240}
             containerWidth={size}
@@ -125,11 +127,11 @@ const ProductCard = ({
         )}
       </ProductCardImageContainer>
       {variant === 'small' && (
-        <Box marginTop={1}>
-          <Text as="h2" variant="medium" margin={0} padding={0}>
+        <Box $marginTop={'small'}>
+          <Text as="h2" $variant="medium" $margin={'none'} $padding={'none'}>
             {title}
           </Text>
-          <Text as="span" variant="medium">
+          <Text as="span" $variant="medium">
             {price}円
           </Text>
         </Box>
