@@ -5,6 +5,7 @@ import AppLogo from 'components/atoms/AppLogo';
 import Box from 'components/layout/Box';
 import Flex from 'components/layout/Flex';
 import Layout from 'components/templates/Layout';
+import SigninFormContainer from 'containers/SigninFormContainer';
 
 const SigninPage: NextPage = () => {
   const router = useRouter();
@@ -42,7 +43,7 @@ const SigninPage: NextPage = () => {
             SigninFormのユーザー名・パスワードから認証APIを呼び出し
             onSigninコールバックが呼び出される
              */}
-             <SigninFormContainer onSignin={handleSignin} />
+            <SigninFormContainer onSignin={handleSignin} />
           </Box>
         </Flex>
       </Flex>
