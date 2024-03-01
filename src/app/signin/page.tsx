@@ -1,3 +1,4 @@
+'use client';
 import { NextPage } from 'next';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';

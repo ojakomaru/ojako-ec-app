@@ -30,6 +30,10 @@ export type GetAllProductsParams = {
    * ページ数
    */
   page?: number;
+  /**
+   * キャッシュ
+   */
+  cache?: number;
 };
 
 /**
@@ -49,9 +53,11 @@ const getAllProducts = async (
     limit,
     sort = 'id',
     order = 'desc',
+    cache = 600,
   }: GetAllProductsParams = {},
 ): Promise<Product[]> => {
   const path = `${context.apiRootUrl.replace(/\/$/g, '')}/products`;
+  // paramsオブジェクトを使用して、クエリ文字列のパラメータを追加
   const params = new URLSearchParams();
 
   category && params.append('category', category);
@@ -69,6 +75,7 @@ const getAllProducts = async (
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
+    next: { revalidate: cache },
   });
 };
 
