@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 import AppLogo from 'components/atoms/AppLogo';
 import Box from 'components/layout/Box';
@@ -9,12 +9,13 @@ import SigninFormContainer from 'containers/SigninFormContainer';
 
 const SigninPage: NextPage = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   // 認証後のイベントハンドラ
   const handleSignin = async (err?: Error) => {
     if (!err) {
       // サインインに成功しクエリが指定されている場合はそのURLに移動
       // デフォルトはトップページに遷移
-      const redirectTo = (router.query['redirect_to'] as string) ?? '/';
+      const redirectTo = (searchParams.get('redirect_to') as string) ?? '/';
       console.log('Redirecting', redirectTo);
       await router.push(redirectTo);
     }

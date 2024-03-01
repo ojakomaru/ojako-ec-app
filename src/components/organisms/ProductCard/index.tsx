@@ -1,3 +1,4 @@
+'use client';
 import { styled } from 'styled-components';
 import ScaleImage from 'components/atoms/ScaleImage';
 import Text from 'components/atoms/Text';
@@ -109,7 +110,7 @@ const ProductCard = ({
             height={imgSize ?? 240}
             containerWidth={size}
             containerHeight={size}
-            objectFit="cover"
+            style={{ objectFit: 'cover' }}
             placeholder="blur"
             blurDataURL={blurDataUrl}
           />
@@ -122,7 +123,7 @@ const ProductCard = ({
             height={imgSize ?? 240}
             containerWidth={size}
             containerHeight={size}
-            objectFit="cover"
+            style={{ objectFit: 'cover' }}
           />
         )}
       </ProductCardImageContainer>

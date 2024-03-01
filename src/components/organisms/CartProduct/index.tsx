@@ -63,7 +63,7 @@ const CartProduct = ({
               alt={title}
               height={120}
               width={120}
-              objectFit="cover"
+              style={{ objectFit: 'cover' }}
             />
           </Link>
         </Box>

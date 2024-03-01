@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { styled } from 'styled-components';
 import AppLogo from 'components/atoms/AppLogo';

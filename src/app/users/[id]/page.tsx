@@ -11,6 +11,7 @@ import { ApiContext } from 'types/data';
 import getUser from 'services/users/get-user';
 import getAllProducts from 'services/products/get-all-products';
 import Separator from 'components/atoms/Separator';
+import UserProductCardListContainer from 'containers/UserProductCardListContainer';
 
 const context: ApiContext = {
   apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
@@ -54,7 +55,7 @@ const UserPage = async ({ params }: { params: { id: string } }) => {
             <Box $marginBottom={'small'}>
               {/* ユーザープロファイルコンテナ */}
               {/* ユーザー情報を表示する。useUserで常に最新のデータを取得する。 */}
-              <UserProfileContainer userId={id} user={user} />
+              <UserProfileContainer userId={userId} user={user} />
             </Box>
             <Box $marginBottom={'small'}>
               <Separator />
@@ -63,7 +64,7 @@ const UserPage = async ({ params }: { params: { id: string } }) => {
               ユーザー商品カードリストコンテナ
               ユーザーが所持する商品カードリストを表示する。useSearchで常に最新のデータを取得する。
             */}
-            <UserProductCardListContainer userId={id} products={products} />
+            <UserProductCardListContainer userId={userId} products={products} />
           </Box>
         </Box>
       </Flex>

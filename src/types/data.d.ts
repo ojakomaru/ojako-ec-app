@@ -20,7 +20,7 @@ export type Product = {
   title: string;
   description: string;
   imageUrl: string;
-  blueDataUrl: string;
+  blurDataUrl: string;
   price: number;
   condition: Condition;
   owner: User;
