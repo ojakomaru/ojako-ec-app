@@ -1,3 +1,4 @@
+'use client';
 import React, { useContext } from 'react';
 import useSWR from 'swr';
 import signin from 'services/auth/signin';

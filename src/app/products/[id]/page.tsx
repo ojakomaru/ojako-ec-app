@@ -10,7 +10,7 @@ import Breadcrumb from 'components/molecules/Breadcrumb';
 import ProductCard from 'components/organisms/ProductCard';
 import UserProfile from 'components/organisms/UserProfile';
 import Layout from 'components/templates/Layout';
-// import AddToCartButtonContainer from 'containers/AddToCartButtonContainer';
+import AddToCartButtonContainer from 'containers/AddToCartButtonContainer';
 import getAllProducts from 'services/products/get-all-products';
 import getProduct from 'services/products/get-product';
 import useProduct from 'services/products/use-product';
@@ -123,10 +123,12 @@ const ProductPage = ({ params }: { params: { id: string } }) => {
               カート追加ボタンコンテナ
               ボタンを押されたらShoppingCartContextに商品を追加する
             */}
-                {/* <AddToCartButtonContainer
-                  product={product}
-                  onAddToCartButtonClick={handleAddToCartButtonClick}
-                /> */}
+                {product && (
+                  <AddToCartButtonContainer
+                    product={product}
+                    onAddToCartButtonClick={handleAddToCartButtonClick}
+                  />
+                )}
               </>
             )}
           </Flex>

@@ -71,7 +71,7 @@ const HomePage = async () => {
               $color="white"
               $variant="extraLarge"
             >
-              Gihyo C2Cで
+              Ojako C2Cで
             </Text>
             <Text
               as="h1"
@@ -84,7 +84,7 @@ const HomePage = async () => {
           </Box>
           <Box $width="100%">
             <Text as="p" $color="white" $variant="mediumLarge">
-              Gihyo
+            Ojako
               C2Cは実践的なNext.jsアプリケーション開発で使われるデモアプリです。モックサーバを使用しています。
               ソースコードは
               <Text
