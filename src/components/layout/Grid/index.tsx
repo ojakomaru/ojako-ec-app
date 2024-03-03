@@ -30,28 +30,27 @@ type GridProps = BoxProps & {
  * gridレイアウトの実現に利用する
  */
 const Grid = styled(Box)<GridProps>`
-  display:
-    'grid',
-    ${({ $gridGap, theme }) => toPropValue('grid-gap', $gridGap, theme)}
-      ${({ $gridColumnGap, theme }) =>
-        toPropValue('grid-column-gap', $gridColumnGap, theme)}
+  display: grid;
+  ${({ $gridGap, theme }) => toPropValue('grid-gap', $gridGap, theme)}
+  ${({ $gridColumnGap, theme }) =>
+    toPropValue('grid-column-gap', $gridColumnGap, theme)}
       ${({ $gridRowGap, theme }) =>
-        toPropValue('grid-row-gap', $gridRowGap, theme)}
+    toPropValue('grid-row-gap', $gridRowGap, theme)}
       ${({ $gridRow, theme }) => toPropValue('grid-row', $gridRow, theme)}
       ${({ $gridColumn, theme }) =>
-        toPropValue('grid-column', $gridColumn, theme)}
+    toPropValue('grid-column', $gridColumn, theme)}
       ${({ $gridAutoFlow, theme }) =>
-        toPropValue('grid-auto-flow', $gridAutoFlow, theme)}
+    toPropValue('grid-auto-flow', $gridAutoFlow, theme)}
       ${({ $gridAutoColumns, theme }) =>
-        toPropValue('grid-auto-columns', $gridAutoColumns, theme)}
+    toPropValue('grid-auto-columns', $gridAutoColumns, theme)}
       ${({ $gridAutoRows, theme }) =>
-        toPropValue('grid-auto-rows', $gridAutoRows, theme)}
+    toPropValue('grid-auto-rows', $gridAutoRows, theme)}
       ${({ $gridTemplateColumns, theme }) =>
-        toPropValue('grid-template-columns', $gridTemplateColumns, theme)}
+    toPropValue('grid-template-columns', $gridTemplateColumns, theme)}
       ${({ $gridTemplateRows, theme }) =>
-        toPropValue('grid-template-rows', $gridTemplateRows, theme)}
+    toPropValue('grid-template-rows', $gridTemplateRows, theme)}
       ${({ $gridTemplateAreas, theme }) =>
-        toPropValue('grid-template-areas', $gridTemplateAreas, theme)}
+    toPropValue('grid-template-areas', $gridTemplateAreas, theme)}
       ${({ $gridArea, theme }) => toPropValue('grid-area', $gridArea, theme)};
 `;
 

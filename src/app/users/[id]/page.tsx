@@ -1,6 +1,5 @@
 import UserProfileContainer from 'containers/UserProfileContainer';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
 import BreadcrumbItem from 'components/atoms/BreadcrumbItem';
 import Box from 'components/layout/Box';
 import Flex from 'components/layout/Flex';
@@ -17,21 +16,13 @@ const context: ApiContext = {
   apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
 };
 const UserPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
   // ユーザー情報と ユーザーの所持する商品を取得し、静的ページを作成
   // 10秒でrevalidateな状態にし、静的ページを更新する
-  const userId = Number(id);
+  const userId = Number(params.id);
   const [user, products] = await Promise.all([
     getUser(context, { id: userId }),
     getAllProducts(context, { userId }),
   ]);
-  // const searchParams = useSearchParams();
-  // const router = useRouter();
-  // const userId = searchParams.get('id');
-
-  // if (router.isFallback) {
-  //   return <div>Loading...</div>;
-  // }
 
   return (
     <Layout>

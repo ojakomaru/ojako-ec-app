@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import type { ApiContext, Category, Condition, Product } from 'types/data';
+import { fetcher } from 'utils';
 
 export type UseSearchProps = {
   /**
@@ -60,9 +61,11 @@ const useSearch = (
     order = 'desc',
   }: UseSearchProps = {},
 ): UseSearch => {
+  // 末尾のスラッシュを削除してエンドポイントの設定
   const path = `${context.apiRootUrl.replace(/\/$/g, '')}/products`;
   const params = new URLSearchParams();
 
+  // クエリストリングの設定
   category && params.append('category', category);
   userId && params.append('owner.id', `${userId}`);
   conditions &&
@@ -70,8 +73,10 @@ const useSearch = (
   sort && params.append('_sort', sort);
   order && params.append('_order', order);
   const query = params.toString();
+  // データを取得して返す
   const { data, error } = useSWR<Product[]>(
     query.length > 0 ? `${path}?${query}` : path,
+    fetcher,
   );
 
   return {

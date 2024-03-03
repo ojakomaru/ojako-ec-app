@@ -1,6 +1,7 @@
+'use client';
 import Image, { ImageProps } from 'next/image';
 // eslint-disable-next-line import/no-named-as-default
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 type ImageShape = 'circle' | 'square';
 type ShapeImageProps = ImageProps & { shape?: ImageShape };

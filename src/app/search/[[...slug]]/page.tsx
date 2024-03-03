@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import styled from 'styled-components';
 import BreadcrumbItem from 'components/atoms/BreadcrumbItem';
 import Text from 'components/atoms/Text';
 import Box from 'components/layout/Box';
@@ -9,15 +8,9 @@ import Flex from 'components/layout/Flex';
 import Breadcrumb from 'components/molecules/Breadcrumb';
 import FilterGroup from 'components/molecules/FilterGroup';
 import Layout from 'components/templates/Layout';
-// import ProductCardListContainer from 'containers/ProductCardListContainer';
+import ProductCardListContainer from 'containers/ProductCardListContainer';
 import type { Category, Condition } from 'types/data';
-
-const Anchor = styled(Link)`
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+import Anchor from 'components/atoms/Anchor';
 
 const categoryNameDict: Record<Category, string> = {
   book: '本',
@@ -25,6 +18,10 @@ const categoryNameDict: Record<Category, string> = {
   clothes: 'トップス',
 };
 
+/**
+ * 検索ページ
+ * @param param0 URLの末尾のパラメータ
+ */
 const SearchPage = ({ params }: { params: { slug?: string[] } }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -41,15 +38,11 @@ const SearchPage = ({ params }: { params: { slug?: string[] } }) => {
     return params.length > 0 ? (params as Condition[]) : [];
   })();
 
-  // Todo:checkboxの配列からクエリパラメータを生成する
+  // checkboxの配列からクエリパラメータを生成する
   const handleChange = (selected: string[]) => {
-    console.log('selected:', selected);
     const params = new URLSearchParams(searchParams.toString());
-    // params.delete(slug[0]);
-    for (let i = 0; i < selected.length; i++) {
-      params.append('condition', selected[i]);
-    }
-    // params.forEach((param, key) => params.append(slug[0], param));
+    params.delete('condition'); // 現在のパラメータを削除する
+    selected.forEach((condition) => params.append('condition', condition));
     router.push(`${pathname}?${params.toString()}`);
   };
 
@@ -142,10 +135,10 @@ const SearchPage = ({ params }: { params: { slug?: string[] } }) => {
                 商品カードリストコンテナ
                 検索クエリから商品カードリストを表示
                */}
-              {/* <ProductCardListContainer
+              <ProductCardListContainer
                 category={slug.length > 0 ? slug[slug.length - 1] : undefined}
                 conditions={conditions}
-              /> */}
+              />
             </Box>
           </Flex>
         </Flex>

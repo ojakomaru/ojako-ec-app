@@ -1,4 +1,4 @@
-import Spinner from 'components/atoms/Spinner';
+import Separator from 'components/atoms/Separator';
 import Box from 'components/layout/Box';
 import Footer from 'components/organisms/Footer';
 import Header from 'components/organisms/Header';
@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       <Header />
       <main>{children}</main>
-      <Spinner />
+      <Separator />
       <Box $padding={'large'}>
         <Footer />
       </Box>

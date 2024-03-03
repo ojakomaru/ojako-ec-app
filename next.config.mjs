@@ -13,7 +13,8 @@ const nextConfig = {
     // styledComponentsの有効化
     styledComponents: true,
   },
-  async rewrites() {
+  // CORS対策でURLを書き換える
+  rewrites: async () => {
     return [
       {
         // ex. /api/proxy
