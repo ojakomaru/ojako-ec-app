@@ -1,16 +1,16 @@
 // eslint-disable-next-line import/no-named-as-default
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 // バッジの円形
-const BadgeWrapper = styled.div<{ backgroundColor?: string }>`
+const BadgeWrapper = styled.div<{ $backgroundColor?: string }>`
   border-radius: 20px;
   height: 20px;
   min-width: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ backgroundColor, theme }) =>
-    backgroundColor ? backgroundColor : theme.colors.primaryLight};
+  background-color: ${({ $backgroundColor, theme }) =>
+    $backgroundColor ? $backgroundColor : theme.colors.primaryLight};
 `;
 
 // バッジ内のテキスト
@@ -36,7 +36,7 @@ interface BadgeProps {
  */
 const Badge = ({ content, backgroundColor }: BadgeProps) => {
   return (
-    <BadgeWrapper backgroundColor={backgroundColor}>
+    <BadgeWrapper $backgroundColor={backgroundColor}>
       <BadgeText>{content}</BadgeText>
     </BadgeWrapper>
   );

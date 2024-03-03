@@ -1,5 +1,6 @@
+'use client';
 import CartProduct from 'components/organisms/CartProduct';
-import { useGlobalSpinnerActionsContext } from 'contexts/GlobalSpinnerContext';
+import { useGlobalSpinnerContext } from 'contexts/GlobalSpinnerContext';
 import { useShoppingCartContext } from 'contexts/ShoppingCartContext';
 import purchase from 'services/purchases/purchase';
 import { ApiContext } from 'types/data';
@@ -12,7 +13,7 @@ const context: ApiContext = {
  * カートコンテナ
  */
 const CartContainer = () => {
-  const setGlobalSpinner = useGlobalSpinnerActionsContext();
+  const { setGlobalSpinner } = useGlobalSpinnerContext();
   const { cart, removeProductFromCart } = useShoppingCartContext();
   // 削除ボタンを押した時、商品を削除
   const handleRemoveButtonClick = (id: number) => {

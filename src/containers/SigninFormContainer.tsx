@@ -2,7 +2,7 @@
 import React from 'react';
 import SigninForm from 'components/organisms/SigninForm';
 import { useAuthContext } from 'contexts/AuthContext';
-import { useGlobalSpinnerActionsContext } from 'contexts/GlobalSpinnerContext';
+import { useGlobalSpinnerContext } from 'contexts/GlobalSpinnerContext';
 
 interface SigninFormContainerProps {
   // サインイン時に呼ばれるイベントハンドラー
@@ -11,7 +11,7 @@ interface SigninFormContainerProps {
 
 const SigninFormContainer = ({ onSignin }: SigninFormContainerProps) => {
   const { signin } = useAuthContext();
-  const setGlobalSpinner = useGlobalSpinnerActionsContext();
+  const { setGlobalSpinner } = useGlobalSpinnerContext();
   // サインインボタンを押された時のイベントハンドラ
   const handleSignin = async (username: string, password: string) => {
     try {

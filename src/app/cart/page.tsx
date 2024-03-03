@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import BreadcrumbItem from 'components/atoms/BreadcrumbItem';
 import Text from 'components/atoms/Text';
@@ -6,11 +7,11 @@ import Flex from 'components/layout/Flex';
 import Breadcrumb from 'components/molecules/Breadcrumb';
 import Layout from 'components/templates/Layout';
 import CartContainer from 'containers/CartContainer';
-// import { useAuthGuard } from 'utils/hooks'
+import { useAuthGuard } from 'utils/hooks';
 
 const CartPage = () => {
   // 認証ガード
-  // useAuthGuard();
+  useAuthGuard();
 
   return (
     <Layout>
