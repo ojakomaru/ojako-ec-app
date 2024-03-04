@@ -3,7 +3,7 @@ import useUser from 'services/users/use-user';
 import type { ApiContext, User } from 'types/data';
 
 const context: ApiContext = {
-  apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_PATH || '/api/proxy',
+  apiRootUrl: process.env.API_BASE_URL || '/api/proxy',
 };
 
 interface UserProfileContainerProps {
@@ -20,11 +20,14 @@ interface UserProfileContainerProps {
 /**
  * ユーザープロフィールコンテナ
  */
-const UserProfileContainer = ({ userId, user }: UserProfileContainerProps) => {
+const UserProfileContainer = async ({
+  userId,
+  user,
+}: UserProfileContainerProps) => {
   // 最新のユーザー情報を取得し、更新があった場合には
   // initialで指定されているデータを上書きする
-  const { user: u } = useUser(context, { id: userId, initial: user });
-
+  const u = await useUser(context, { id: userId, initial: user });
+  // console.log('useUser',u);
   if (!u) return <div>Loading...</div>;
 
   return (

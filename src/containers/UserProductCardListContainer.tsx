@@ -6,7 +6,7 @@ import useSearch from 'services/products/use-search';
 import type { ApiContext, Product } from 'types/data';
 
 const context: ApiContext = {
-  apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_PATH || '/api/proxy',
+  apiRootUrl: process.env.API_BASE_URL || '/api/proxy',
 };
 
 interface UserProductCardListContainerProps {
@@ -23,12 +23,12 @@ interface UserProductCardListContainerProps {
 /**
  * ユーザー商品カードリストコンテナ
  */
-const UserProductCardListContainer = ({
+const UserProductCardListContainer = async ({
   userId,
   products,
 }: UserProductCardListContainerProps) => {
   // ユーザーの所持する商品
-  const { products: userProducts } = useSearch(context, {
+  const userProducts = await useSearch(context, {
     userId,
     initial: products,
   });

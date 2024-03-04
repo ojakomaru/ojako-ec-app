@@ -3,7 +3,7 @@ import RectLoader from 'components/atoms/RectLoader';
 import Box from 'components/layout/Box';
 import ProductCard from 'components/organisms/ProductCard';
 import ProductCardList from 'components/organisms/ProductCardList';
-import useSearch from 'services/products/use-search';
+import useSearchSWR from 'services/products/use-searchSWR';
 import type { ApiContext, Category, Condition } from 'types/data';
 
 const context: ApiContext = {
@@ -28,7 +28,7 @@ const ProductCardListContainer = ({
   category,
   conditions,
 }: ProductCardListContainerProps) => {
-  const { products, isLoading } = useSearch(context, {
+  const { products, isLoading } = useSearchSWR(context, {
     category,
     conditions,
   });

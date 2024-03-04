@@ -1,5 +1,5 @@
-import useSWR from 'swr';
 import type { ApiContext, User } from 'types/data';
+import { fetcher } from 'utils';
 
 export type UseUserProps = {
   /**
@@ -12,39 +12,25 @@ export type UseUserProps = {
   initial?: User;
 };
 
-export type UseUser = {
-  /**
-   * 取得するユーザー
-   */
-  user?: User;
-  /**
-   * ロードフラグ
-   */
-  isLoading: boolean;
-  /**
-   * エラーフラグ
-   */
-  isError: boolean;
-};
-
 /**
  * ユーザーAPI（個別取得）のカスタムフック
  * @param context APIコンテキスト
  * @returns ユーザーとAPI呼び出しの状態
  */
-const useUser = (
+const useUser = async (
   context: ApiContext,
   { id, initial }: UseUserProps,
-): UseUser => {
-  const { data, error } = useSWR<User>(
+): Promise<User> => {
+  const user = await fetcher(
     `${context.apiRootUrl.replace(/\/$/g, '')}/users/${id}`,
+    {
+      headers: {
+        Accept: 'application/json',
+        'Content-type': 'application/json',
+      },
+    },
   );
-
-  return {
-    user: data ?? initial,
-    isLoading: !error && !data,
-    isError: !!error,
-  };
+  return user ?? initial ?? [];
 };
 
 export default useUser;

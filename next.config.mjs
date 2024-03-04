@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: 'export',  //rewritesとコンフリクトするためコメント
   reactStrictMode: true,
   // 本番環境ではReact Testing Libraryで使用するdata-testid属性を削除
   ...(process.env.NODE_ENV === 'production' && {

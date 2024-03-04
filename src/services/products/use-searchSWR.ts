@@ -50,7 +50,7 @@ export type UseSearch = {
  * @param params 検索条件
  * @returns 商品一覧とAPI呼び出しの状態
  */
-const useSearch = async (
+const useSearchSWR = (
   context: ApiContext,
   {
     category,
@@ -60,7 +60,7 @@ const useSearch = async (
     sort = 'id',
     order = 'desc',
   }: UseSearchProps = {},
-): Promise<Product[]> => {
+): UseSearch => {
   // 末尾のスラッシュを削除してエンドポイントの設定
   const path = `${context.apiRootUrl.replace(/\/$/g, '')}/products`;
   const params = new URLSearchParams();
@@ -74,22 +74,16 @@ const useSearch = async (
   order && params.append('_order', order);
   const query = params.toString();
   // データを取得して返す
-  return await fetcher(query.length > 0 ? `${path}?${query}` : path, {
-    headers: {
-      Accept: 'application/json',
-      'Content-type': 'application/json',
-    },
-  });
-  // const { data, error } = useSWR<Product[]>(
-  //   query.length > 0 ? `${path}?${query}` : path,
-  //   fetcher,
-  // );
+  const { data, error } = useSWR<Product[]>(
+    query.length > 0 ? `${path}?${query}` : path,
+    fetcher,
+  );
 
-  // return {
-  //   products: data ?? initial ?? [],
-  // isLoading: !error && !data,
-  // isError: !!error,
-  // };
+  return {
+    products: data ?? initial ?? [],
+    isLoading: !error && !data,
+    isError: !!error,
+  };
 };
 
-export default useSearch;
+export default useSearchSWR;
